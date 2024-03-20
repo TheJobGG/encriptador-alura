@@ -1,0 +1,189 @@
+:root {
+  --bg-color: #f3f5fc;
+  --dark-blue: #0a3871;
+  --standard-gap: 16px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background-color: var(--bg-color);
+}
+
+#container {
+  margin: 20px;
+}
+
+header {
+  margin-bottom: 20px;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+}
+
+#text-to-encrypt,
+#text-to-encrypt::placeholder {
+  color: var(--dark-blue);
+  font-size: 24px;
+  border: none;
+  background-color: transparent;
+}
+
+#text-to-encrypt {
+  min-width: 100%;
+  height: 150px;
+  margin-bottom: 20px;
+  outline: none;
+  resize: none; 
+}
+
+.lowercase-message{
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+}
+
+.buttons-and-message, .buttons {
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--standard-gap);
+}
+
+.button-basic {
+  padding: 12px 32px;
+  border-radius: 99px;
+  border-style: none;
+  width: 100%;
+  cursor: pointer;
+}
+
+.primary-button{
+  background-color: var(--dark-blue);
+  color: white;
+  border: 1px solid var(var(--dark-blue));
+  transition: filter ease 200ms;
+}
+
+.primary-button:hover, .outline-button:hover{
+  filter: brightness(1.2);
+}
+
+.outline-button {
+  background-color: transparent;
+  color: var(--dark-blue);
+  border: 1px solid var(--dark-blue);
+  transition: filter ease 200ms;
+}
+
+#encrypt-decrypt-content{
+  background-color: white;
+  box-shadow: 0px 24px 32px -8px #00000014;
+  padding: 20px;
+  margin-top: 64px;
+  border-radius: 32px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+} 
+
+#encrypt-decrypt-content > img.empty-illustration, 
+#encrypt-decrypt-content > #content,
+#encrypt-decrypt-content > #button-copy-content {
+  display: none;
+}
+
+#encrypt-decrypt-content > p.message-no-content{
+  text-align: center;
+  display: block;
+  text-wrap: pretty;
+}
+
+
+@media screen and (min-width: 768px){
+  .buttons {
+    flex-direction: row;
+    column-gap: 24px;
+  }
+}
+
+
+@media screen and (min-width: 1024px){
+  #container {
+    display: flex;
+    min-height: 92vh;
+    column-gap: 80px;
+  }
+
+  /* Left side */
+  main {
+    width: 100%;
+  }
+  .main-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 100%;
+    
+  }
+  
+  /* Right side with image */
+  #encrypt-decrypt-content{
+    margin-top: 0;
+    width: 100%;
+    max-width: 400px;
+    justify-content: center;
+  }
+  
+  #encrypt-decrypt-content > img.empty-illustration {
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  #encrypt-decrypt-content > img.empty-illustration.hidden {
+    display: none;
+  }
+
+  #text-to-encrypt {
+    
+    height: 100%;
+  }
+  
+  .buttons-and-message, .main-content{
+    margin-left: auto;
+    width: 100%;
+    max-width: 680px;
+  }
+  
+}
+
+@media screen and (min-width: 1200px){
+  
+  
+}
+
+
+/* Styles when the encrypt/decrypt button has pressed and the content has to be revealed in screen */
+#encrypt-decrypt-content.has-content{
+  justify-content: space-between;
+}
+#encrypt-decrypt-content.has-content > #content,
+#encrypt-decrypt-content.has-content > #button-copy-content {
+  display: block;
+  word-wrap: break-word;
+}
+
+#encrypt-decrypt-content.has-content > p#content{
+  text-align: left;
+}
+
+#encrypt-decrypt-content.has-content > img.empty-illustration, #encrypt-decrypt-content.has-content > p.message-no-content {
+  display: none;
+}
